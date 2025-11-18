@@ -3,7 +3,7 @@ import path from 'path'
 
 const storage = multer.diskStorage({
     destination:(req,file,cb)=>{
-        cb(null,'uploads/boardImgTemp/')
+        cb(null,'uploads/boardMediaTemp/')
     },
     filename: (req,file,cb) =>
     {
@@ -12,6 +12,6 @@ const storage = multer.diskStorage({
     }
 })
 
-const boardImgUpload = multer({storage})
+const boardMediaUpload = multer({storage})
 
-export default boardImgUpload
+export default boardMediaUpload

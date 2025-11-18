@@ -3,15 +3,15 @@ import fs from 'fs'
 async function deleteFile(file) {
     try
     {
-        await fs.promises.unlink(`uploads/boardImgTemp/${file}`)
+        await fs.promises.unlink(`uploads/boardMediaTemp/${file}`)
     }
     catch(ex)
     {}
 }
 
-async function boardImgTempCleaner()
+async function boardMediaTempCleaner()
 {
-    fs.readdir(`uploads/boardImgTemp`,(err,files)=>{
+    fs.readdir(`uploads/boardMediaTemp`,(err,files)=>{
         if(err)
         {
             return null
@@ -20,4 +20,4 @@ async function boardImgTempCleaner()
     })
 }
 
-export default boardImgTempCleaner
+export default boardMediaTempCleaner

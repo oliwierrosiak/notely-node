@@ -5,8 +5,8 @@ async function imgCompressor(file)
 {
     const buffer = fs.readFileSync(`${file.destination}${file.filename}`)
     let success
-    await sharp(buffer).webp({quality:50}).toFile(`uploads/boardImgTemp/${file.filename.split('.')[0]}.webp`).then(()=>{success = true}).catch(ex=>{ success = false})
-    return success?{path:`uploads/boardImgTemp/${file.filename.split('.')[0]}.webp`,extension:'.webp',filename:file.filename.split('.')[0],mimetype:'image/webp'}:{path:`${file.destination}${file.filename}`,extension:`.${file.filename.split('.')[1]}`,filename:file.filename.split('.')[0],mimetype:`image/${file.filename.split('.')[1]}`}
+    await sharp(buffer).webp({quality:50}).toFile(`uploads/boardMedia/${file.filename.split('.')[0]}.webp`).then(()=>{success = true}).catch(ex=>{ success = false})
+    return success?{path:`uploads/boardMedia/${file.filename.split('.')[0]}.webp`,extension:'.webp',filename:file.filename.split('.')[0],mimetype:'image/webp'}:{path:`${file.destination}${file.filename}`,extension:`.${file.filename.split('.')[1]}`,filename:file.filename.split('.')[0],mimetype:`image/${file.filename.split('.')[1]}`}
 
 }
 
