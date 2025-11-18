@@ -6,14 +6,28 @@ async function postBoardImg(req,res)
 {
     try
     {
-        const img = await imgCompressor(req.file)
-        await s3Upload(img.path,`boardImg/${img.filename}${img.extension}`,img.mimetype)
-        const link = `https://interactive-board-storage.s3.eu-north-1.amazonaws.com/boardImg/${img.filename}${img.extension}`
-        res.status(200).json({link})
+        let file
+        if(req.file.mimetype.includes('image/'))
+        {
+            file = await imgCompressor(req.file)
+        }
+        else if(req.file.mimetype.includes('video/'))
+        {
+            file = {path:req.file.path,extension:`.${req.file.filename.split('.')[1]}`,filename:req.file.filename.split('.')[0],mimetype:req.file.mimetype}
+        }
+        else
+        {
+            throw new Error()
+        }
+
+        await s3Upload(file.path,`boardImg/${file.filename}${file.extension}`,file.mimetype)
+        const link = `https://interactive-board-storage.s3.eu-north-1.amazonaws.com/boardImg/${file.filename}${file.extension}`
+        res.status(200).json({link,mimetype:file.mimetype})
         boardImgTempCleaner()
     }
     catch(ex)
     {
+        console.log(ex)
         res.sendStatus(500)
     }
 }
