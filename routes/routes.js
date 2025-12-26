@@ -5,6 +5,7 @@ import getBoardData from '../controllers/getBoardData.js'
 import updateBoardTitle from '../controllers/updateNoteTitle.js'
 import updateNoteContent from '../controllers/updateNoteContent.js'
 import deleteBoardItem from '../controllers/deleteBoardItem.js'
+import deleteAWSMedia from '../controllers/deleteAWSMedia.js'
 
 const Router = new express.Router()
 
@@ -17,5 +18,7 @@ Router.post('/updateNoteTitle/:id',updateBoardTitle)
 Router.post('/updateNoteContent/:id',updateNoteContent)
 
 Router.delete('/deleteBoardItem/:boardId/:elementId',deleteBoardItem)
+
+Router.post('/deleteAWSMedia',deleteAWSMedia)
 
 export default Router
