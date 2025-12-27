@@ -8,6 +8,10 @@ const NotesModel = new mongoose.Schema({
     content:{
         type:Array,
         default:[]
+    },
+    boardColor:{
+        type:String,
+        default:'bgBlack5'
     }
 })
 
