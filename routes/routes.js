@@ -9,6 +9,8 @@ import deleteAWSMedia from '../controllers/deleteAWSMedia.js'
 import updateNoteColor from '../controllers/updateNoteColor.js'
 import updateNoteTemplate from '../controllers/updateNoteTemplate.js'
 import updateNoteCanvas from '../controllers/updateNoteCanvas.js'
+import registerUser from '../controllers/registerUser.js'
+import userImgUploader from '../middleware/uploadUserImg.js'
 
 const Router = new express.Router()
 
@@ -29,5 +31,7 @@ Router.post('/updateNoteColor/:id',updateNoteColor)
 Router.post('/updateNoteTemplate/:id',updateNoteTemplate)
 
 Router.post('/updateNoteCanvas/:id',updateNoteCanvas)
+
+Router.post('/register',userImgUploader.single('img'),registerUser)
 
 export default Router

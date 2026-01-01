@@ -9,22 +9,22 @@ async function deleteFile(path,file) {
     {}
 }
 
-async function boardMediaTempCleaner()
+async function tempCleaner(temp,directory)
 {
-    fs.readdir(`uploads/boardMediaTemp`,(err,files)=>{
+    fs.readdir(`uploads/${temp}`,(err,files)=>{
         if(err)
         {
             return null
         }
-        files.forEach(x=>deleteFile('uploads/boardMediaTemp',x))
+        files.forEach(x=>deleteFile(`uploads/${temp}`,x))
     })
-    fs.readdir('uploads/boardMedia',(err,files)=>{
+    fs.readdir(`uploads/${directory}`,(err,files)=>{
         if(err)
         {
             return null
         }
-        files.forEach(x=>deleteFile('uploads/boardMedia',x))
+        files.forEach(x=>deleteFile(`uploads/${directory}`,x))
     })
 }
 
-export default boardMediaTempCleaner
+export default tempCleaner

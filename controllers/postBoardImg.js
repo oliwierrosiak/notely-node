@@ -1,6 +1,6 @@
 import s3Upload from "../s3/s3Upload.js"
 import imgCompressor from "../sharp/imgCompressor.js"
-import boardMediaTempCleaner from "../tempCleaners/boardMediaTempCleaner.js"
+import tempCleaner from "../tempCleaners/boardMediaTempCleaner.js"
 import videoCompressor from "../videoCompressor/videoCompressor.js"
 
 async function postBoardImg(req,res)
@@ -10,7 +10,7 @@ async function postBoardImg(req,res)
         let file
         if(req.file.mimetype.includes('image/'))
         {
-            file = await imgCompressor(req.file)
+            file = await imgCompressor(req.file,'boardMedia')
         }
         else if(req.file.mimetype.includes('video/'))
         {
@@ -23,7 +23,7 @@ async function postBoardImg(req,res)
         await s3Upload(file.path,`boardMedia/${file.filename}${file.extension}`,file.mimetype)
         const link = `https://interactive-board-storage.s3.eu-north-1.amazonaws.com/boardMedia/${file.filename}${file.extension}`
         res.status(200).json({link,mimetype:file.mimetype})
-        boardMediaTempCleaner()
+        tempCleaner('boardMediaTemp','boardMedia')
     }
     catch(ex)
     {
