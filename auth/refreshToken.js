@@ -4,7 +4,7 @@ dotenv.config()
 
 function refreshToken(req,res)
 {
-    const refreshToken = req.headers['authorization']?.split(' ')[1]
+    const refreshToken = req.cookies.refreshToken
     if(!refreshToken)
     {
         res.sendStatus(403)

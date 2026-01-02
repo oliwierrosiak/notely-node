@@ -15,6 +15,10 @@ function verifyToken(req,res,next)
         {
             res.sendStatus(401)
         }
+        else
+        {
+            req.user = data.email
+        }
     })
 
     next()
