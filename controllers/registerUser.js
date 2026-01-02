@@ -1,7 +1,8 @@
-import { User } from "../db/dbConfig.js"
+import { User, RefreshToken } from "../db/dbConfig.js"
 import imgCompressor from "../sharp/imgCompressor.js"
 import s3Upload from "../s3/s3Upload.js"
 import tempCleaner from "../tempCleaners/boardMediaTempCleaner.js"
+import createTokens from "../auth/createTokens.js"
 
 async function uploadImg(img)
 {
@@ -34,7 +35,25 @@ async function registerUser(req,res)
 
         await user.save()
 
-        res.sendStatus(200)
+        const {accessToken,refreshToken} = createTokens({email:user.email})
+
+        const refreshObject = new RefreshToken({
+            token:refreshToken,
+            expiresIn:new Date().getTime() + 21600000
+        })
+        
+        await refreshObject.save()
+
+        res.cookie("refreshToken", refreshToken, {
+            httpOnly: true,
+            secure: false,    
+            sameSite: "lax",
+            path: "/",
+            maxAge: 60 * 60 * 1000 * 6
+        })
+
+        res.status(200).json({accessToken,user:{email:user.email,name:user.name,img:user.img}})
+        
         if(req.file)
         {
             await uploadImg(img)
