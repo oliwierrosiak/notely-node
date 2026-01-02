@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from 'bcrypt'
 import emailValidate from "../validators/emailValidator.js";
-import nameValidate from "./nameValidator.js";
+import nameValidate from "../validators/nameValidator.js";
 import passwordValidate from "../validators/passwordValidator.js";
 
 const UserModel = new mongoose.Schema({

@@ -11,6 +11,9 @@ import updateNoteTemplate from '../controllers/updateNoteTemplate.js'
 import updateNoteCanvas from '../controllers/updateNoteCanvas.js'
 import registerUser from '../controllers/registerUser.js'
 import userImgUploader from '../middleware/uploadUserImg.js'
+import login from '../controllers/login.js'
+import refreshToken from '../auth/refreshToken.js'
+import verifyToken from '../auth/varifyTokenMidleware.js'
 
 const Router = new express.Router()
 
@@ -33,5 +36,11 @@ Router.post('/updateNoteTemplate/:id',updateNoteTemplate)
 Router.post('/updateNoteCanvas/:id',updateNoteCanvas)
 
 Router.post('/register',userImgUploader.single('img'),registerUser)
+
+Router.post('/login',login)
+
+Router.post('/refreshToken',refreshToken)
+
+Router.get('/admin',verifyToken,(req,res)=>{res.send('admin')})
 
 export default Router
