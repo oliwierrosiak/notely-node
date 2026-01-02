@@ -1,6 +1,4 @@
 import { Notes } from "../db/dbConfig.js"
-import dotenv from 'dotenv'
-dotenv.config()
 
 async function deleteBoardItem(req,res)
 {

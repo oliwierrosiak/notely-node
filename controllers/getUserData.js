@@ -1,6 +1,4 @@
-import dotenv from 'dotenv'
 import { User } from '../db/dbConfig.js'
-dotenv.config()
 
 async function getUserData(req,res)
 {

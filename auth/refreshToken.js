@@ -1,7 +1,5 @@
 import jwt from 'jsonwebtoken'
-import dotenv from 'dotenv'
 import { RefreshToken } from '../db/dbConfig.js'
-dotenv.config()
 
 async function refreshToken(req,res)
 {

@@ -1,6 +1,4 @@
-import dotenv from 'dotenv'
 import s3Delete from '../s3/s3Delete.js'
-dotenv.config()
 
 async function deleteAWSMedia(req,res)
 {

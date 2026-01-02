@@ -1,8 +1,6 @@
 import fs from 'fs'
 import { PutObjectCommand } from '@aws-sdk/client-s3'
 import s3 from './s3Config.js'
-import dotenv from 'dotenv'
-dotenv.config()
 
 function s3Upload(file,name,mimetype)
 {
