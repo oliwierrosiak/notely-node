@@ -35,7 +35,7 @@ async function login(req,res)
         })
 
 
-        res.status(200).json({accessToken,user:{email:user.email,name:user.name,img:user.img}})
+        res.status(200).json({accessToken,user:{email:user.email,name:user.name,img:user.img,id:user.id}})
 
         clearExpiredTokens()
 

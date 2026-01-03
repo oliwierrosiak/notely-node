@@ -58,7 +58,7 @@ async function registerUser(req,res)
             tempCleaner('userImgTemp','userImg')
         }
 
-        res.status(200).json({accessToken,user:{email:user.email,name:user.name,img:user.img}})
+        res.status(200).json({accessToken,user:{email:user.email,name:user.name,img:user.img,id:user.id}})
         
        
     }

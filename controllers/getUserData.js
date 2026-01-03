@@ -9,7 +9,7 @@ async function getUserData(req,res)
         {
             throw new Error()
         }
-        res.status(200).json({email:user.email,name:user.email,img:user.img})
+        res.status(200).json({email:user.email,name:user.name,img:user.img,id:user.id})
     }
     catch(ex)
     {
