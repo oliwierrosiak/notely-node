@@ -16,6 +16,7 @@ import refreshToken from '../auth/refreshToken.js'
 import verifyToken from '../auth/verifyTokenMiddleware.js'
 import getUserData from '../controllers/getUserData.js'
 import logout from '../auth/logout.js'
+import resetPassword from '../controllers/resetPassword.js'
 
 const Router = new express.Router()
 
@@ -46,5 +47,7 @@ Router.post('/refreshToken',refreshToken)
 Router.get('/getUserData',verifyToken,getUserData)
 
 Router.get('/logout',logout)
+
+Router.post('/resetPassword',resetPassword)
 
 export default Router

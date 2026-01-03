@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import NotesModel from "./models/notesModel.js";
 import UserModel from "./models/userModel.js";
 import RefreshTokenModel from "./models/refreshTokenModel.js";
+import ResetPasswordModel from "./models/resetPassword.js";
 dotenv.config()
 
 export const Notes = mongoose.model('note',NotesModel)
@@ -10,5 +11,7 @@ export const Notes = mongoose.model('note',NotesModel)
 export const User = mongoose.model('user',UserModel)
 
 export const RefreshToken = mongoose.model('token',RefreshTokenModel)
+
+export const ResetPassword = mongoose.model('resetpassword',ResetPasswordModel)
 
 mongoose.connect(process.env.DATABASE)
