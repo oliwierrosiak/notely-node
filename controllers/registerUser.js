@@ -52,13 +52,15 @@ async function registerUser(req,res)
             maxAge: 60 * 60 * 1000 * 6
         })
 
-        res.status(200).json({accessToken,user:{email:user.email,name:user.name,img:user.img}})
-        
         if(req.file)
         {
             await uploadImg(img)
             tempCleaner('userImgTemp','userImg')
         }
+
+        res.status(200).json({accessToken,user:{email:user.email,name:user.name,img:user.img}})
+        
+       
     }
     catch(ex)
     {
