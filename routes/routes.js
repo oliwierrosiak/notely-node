@@ -17,6 +17,7 @@ import verifyToken from '../auth/verifyTokenMiddleware.js'
 import getUserData from '../controllers/getUserData.js'
 import logout from '../auth/logout.js'
 import resetPassword from '../controllers/resetPassword.js'
+import joinWithCode from '../controllers/joinWithCode.js'
 
 const Router = new express.Router()
 
@@ -49,5 +50,7 @@ Router.get('/getUserData',verifyToken,getUserData)
 Router.get('/logout',logout)
 
 Router.post('/resetPassword',resetPassword)
+
+Router.get('/joinWithCode/:code',joinWithCode)
 
 export default Router
