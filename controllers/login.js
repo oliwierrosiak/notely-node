@@ -26,16 +26,8 @@ async function login(req,res)
 
         await refreshObject.save()
 
-        res.cookie("refreshToken", refreshToken, {
-            httpOnly: true,
-            secure: false,    
-            sameSite: "lax",
-            path: "/",
-            maxAge: 60 * 60 * 1000 * 6
-        })
 
-
-        res.status(200).json({accessToken,user:{email:user.email,name:user.name,img:user.img,id:user.id}})
+        res.status(200).json({accessToken,refreshToken,user:{email:user.email,name:user.name,img:user.img,id:user.id}})
 
         clearExpiredTokens()
 

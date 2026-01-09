@@ -1,16 +1,19 @@
-import deleteRefreshToken from "./deleteRefreshToken.js"
+import { RefreshToken } from "../db/dbConfig.js"
 
-function logout(req,res)
+async function logout(req,res)
 {
-    deleteRefreshToken(req.cookies.refreshToken)
-
-    res.cookie("refreshToken", "", {
-        httpOnly: true,
-        secure: false,
-        sameSite: "lax",
-        path: "/",
-        maxAge: 0,
-    });
+    try
+    {
+        const token = req.headers['authorization']?.split(' ')[1]
+        if(!token)
+        {
+            throw new Error()
+        }
+        await RefreshToken.deleteOne({token})
+    }
+    catch(ex)
+    {
+    }
     res.sendStatus(200)
 }
 

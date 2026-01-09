@@ -5,6 +5,8 @@ async function joinWithCode(req,res)
     try
     {
         const note = await Notes.findOne({code:req.params.code})
+        console.log(note)
+        console.log(req.user)
         if(!note)
         {
             const error = new Error('Note not found')

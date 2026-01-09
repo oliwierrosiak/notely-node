@@ -3,10 +3,10 @@ import { RefreshToken } from '../db/dbConfig.js'
 
 async function refreshToken(req,res)
 {
-    const refreshToken = req.cookies.refreshToken
+    const refreshToken = req.headers['authorization'].split(' ')[1]
     if(!refreshToken)
     {
-        res.sendStatus(403)
+        res.sendStatus(401)
     }
 
     try
@@ -20,7 +20,7 @@ async function refreshToken(req,res)
         jwt.verify(refreshToken,process.env.REFRESH_TOKEN,(err,data)=>{
         if(err)
         {
-            res.sendStatus(403)
+            res.sendStatus(401)
         }
 
         const payload = {

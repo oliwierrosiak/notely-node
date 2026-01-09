@@ -45,15 +45,15 @@ Router.post('/register',userImgUploader.single('img'),registerUser)
 
 Router.post('/login',login)
 
-Router.post('/refreshToken',refreshToken)
+Router.get('/refreshToken',refreshToken)
 
 Router.get('/getUserData',verifyToken,getUserData)
 
-Router.get('/logout',logout)
+Router.delete('/logout',logout)
 
 Router.post('/resetPassword',resetPassword)
 
-Router.get('/joinWithCode/:code',joinWithCode)
+Router.get('/joinWithCode/:code',verifyToken,joinWithCode)
 
 Router.post('/compareNotePassword',compareNotePassword)
 
