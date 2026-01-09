@@ -16,7 +16,7 @@ async function compareNotePassword(req,res)
         }
         else
         {
-            res.sendStatus(401)
+            res.sendStatus(403)
         }
     }
     catch(ex)

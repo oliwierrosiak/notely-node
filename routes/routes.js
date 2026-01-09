@@ -55,7 +55,7 @@ Router.post('/resetPassword',resetPassword)
 
 Router.get('/joinWithCode/:code',verifyToken,joinWithCode)
 
-Router.post('/compareNotePassword',compareNotePassword)
+Router.post('/compareNotePassword',verifyToken,compareNotePassword)
 
 Router.post('/createNote',createNote)
 
