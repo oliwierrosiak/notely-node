@@ -9,6 +9,7 @@ async function getBoardData(req,res)
         {
             throw new Error()
         }
+        note.notePassword &&= true
         const canvas = note.content.find(x=>x.type === "canvas")
         if(canvas)
         {
