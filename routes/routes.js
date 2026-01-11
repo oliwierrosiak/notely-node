@@ -20,6 +20,8 @@ import resetPassword from '../controllers/resetPassword.js'
 import joinWithCode from '../controllers/joinWithCode.js'
 import compareNotePassword from '../controllers/compareNotePassword.js'
 import createNote from '../controllers/createNote.js'
+import getNotes from '../controllers/getNotes.js'
+import deleteNote from '../controllers/deleteNote.js'
 
 const Router = new express.Router()
 
@@ -58,5 +60,9 @@ Router.get('/joinWithCode/:code',verifyToken,joinWithCode)
 Router.post('/compareNotePassword',verifyToken,compareNotePassword)
 
 Router.post('/createNote',createNote)
+
+Router.get('/getNotes',verifyToken,getNotes)
+
+Router.delete('/deleteNote/:id',verifyToken,deleteNote)
 
 export default Router
