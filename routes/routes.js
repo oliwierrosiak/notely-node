@@ -22,6 +22,7 @@ import compareNotePassword from '../controllers/compareNotePassword.js'
 import createNote from '../controllers/createNote.js'
 import getNotes from '../controllers/getNotes.js'
 import deleteNote from '../controllers/deleteNote.js'
+import updateNote from '../controllers/updateNote.js'
 
 const Router = new express.Router()
 
@@ -64,5 +65,7 @@ Router.post('/createNote',createNote)
 Router.get('/getNotes',verifyToken,getNotes)
 
 Router.delete('/deleteNote/:id',verifyToken,deleteNote)
+
+Router.put('/updateNote/:id',verifyToken,updateNote)
 
 export default Router
