@@ -28,7 +28,7 @@ const Router = new express.Router()
 
 Router.post('/boardImg',boardMediaUpload.single('img'),postBoardImg)
 
-Router.get('/getBoardData/:id',getBoardData)
+Router.get('/getBoardData/:id',verifyToken,getBoardData)
 
 Router.post('/updateNoteTitle/:id',updateBoardTitle)
 

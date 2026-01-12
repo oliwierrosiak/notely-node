@@ -27,7 +27,11 @@ const NotesModel = new mongoose.Schema({
         default: null
     },
     admin:String,
-    visibility:String
+    visibility:String,
+    visitors:{
+        type:Array,
+        default:[]
+    }
 })
 
 NotesModel.pre('save',async function() {

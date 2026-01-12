@@ -19,6 +19,18 @@ async function getBoardData(req,res)
             noteContent.unshift(canvas)
             note.content = [...noteContent]
         }
+        const visitors = [...note.visitors]
+
+        const userAlreadyVisitedIndex = visitors.findIndex(x=>x.user === req.user)
+        
+        if(userAlreadyVisitedIndex !== -1)
+        {
+            visitors.splice(userAlreadyVisitedIndex,1)
+        }
+
+        visitors.push({user:req.user,time:new Date().getTime()})
+        note.visitors = visitors
+        await note.save()
         res.status(200).json(note)
         
     }

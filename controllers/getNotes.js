@@ -13,7 +13,7 @@ async function getNotes(req,res)
         else
         {
             myNotes.map(x=>x.notePassword &&= true)
-            response.myNotes = myNotes
+            response.myNotes = myNotes.reverse()
         }
         res.status(200).json(response)
     }
