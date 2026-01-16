@@ -9,7 +9,7 @@ async function getBoardData(req,res)
         {
             throw new Error()
         }
-        note.notePassword &&= true
+        
         const canvas = note.content.find(x=>x.type === "canvas")
         if(canvas)
         {
@@ -31,6 +31,7 @@ async function getBoardData(req,res)
         visitors.push({user:req.user,time:new Date().getTime()})
         note.visitors = visitors
         await note.save()
+        note.notePassword &&= true
         res.status(200).json(note)
         
     }

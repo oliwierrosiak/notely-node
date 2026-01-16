@@ -26,6 +26,7 @@ import updateNote from '../controllers/updateNote.js'
 import updateUserPhoto from '../controllers/updateUserPhoto.js'
 import updateUserName from '../controllers/updateUserName.js'
 import deleteUserAccount from '../controllers/deleteUserAccount.js'
+import checkResetPasswordTokenValidity from '../controllers/checkResetPasswordTokenValidity.js'
 
 const Router = new express.Router()
 
@@ -76,5 +77,7 @@ Router.put('/updateUserPhoto',verifyToken,userImgUploader.single('photo'),update
 Router.put('/updateUserName',verifyToken,updateUserName)
 
 Router.post('/deleteAccount',verifyToken,deleteUserAccount)
+
+Router.get('/checkResetPasswordTokenValidity/:id',checkResetPasswordTokenValidity)
 
 export default Router
