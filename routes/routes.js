@@ -28,6 +28,7 @@ import updateUserName from '../controllers/updateUserName.js'
 import deleteUserAccount from '../controllers/deleteUserAccount.js'
 import checkResetPasswordTokenValidity from '../controllers/checkResetPasswordTokenValidity.js'
 import resetUserPassword from '../controllers/resetUserPassword.js'
+import googleLogin from '../controllers/googleLogin.js'
 
 const Router = new express.Router()
 
@@ -82,5 +83,7 @@ Router.post('/deleteAccount',verifyToken,deleteUserAccount)
 Router.get('/checkResetPasswordTokenValidity/:id',checkResetPasswordTokenValidity)
 
 Router.put('/resetUserPassword/:id',resetUserPassword)
+
+Router.post('/googleLogin',googleLogin)
 
 export default Router

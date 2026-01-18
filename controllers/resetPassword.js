@@ -6,6 +6,7 @@ async function resetPassword(req,res)
 {
     try
     {   
+        clearExpiredResetPasswordTokens()
         const user = await User.findOne({email:req.body.email})
         if(!user)
         {
@@ -56,7 +57,7 @@ async function resetPassword(req,res)
             })
 
             res.sendStatus(200)
-            clearExpiredResetPasswordTokens()
+            
 
         }
     }
