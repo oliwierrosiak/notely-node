@@ -14,7 +14,7 @@ async function updateUserPhoto(req,res)
 
         await s3Upload(img.path,`userImg/${img.filename}${img.extension}`,img.mimetype)
 
-        if(user.img)
+        if(user.img && user.img.includes('.amazonaws.com'))
         {
             await s3Delete(user.img.split(`${process.env.AWS_ADDRESS}/`)[1])
         }
