@@ -59,6 +59,13 @@ io.on('connection',(socket)=>{
     socket.on('canvasUpdate',({canvas,noteId})=>{
         socket.to(noteId).emit("canvasUpdated",canvas)
     })
+    socket.on('boardTemplateUpdate',({noteId,template})=>{
+        socket.to(noteId).emit("boardTemplateUpdated",template)
+    })
+    socket.on('boardColorUpdate',({noteId,color})=>
+    {
+        socket.to(noteId).emit("boardColorUpdated",color)
+    })
 })
 
 App.use(express.json())
