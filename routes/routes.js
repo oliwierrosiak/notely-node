@@ -32,13 +32,13 @@ import googleLogin from '../controllers/googleLogin.js'
 
 const Router = new express.Router()
 
-Router.post('/boardImg',boardMediaUpload.single('img'),postBoardImg)
+Router.post('/boardImg',verifyToken,boardMediaUpload.single('img'),postBoardImg)
 
 Router.get('/getBoardData/:id',verifyToken,getBoardData)
 
 Router.post('/updateNoteTitle/:id',verifyToken,updateBoardTitle)
 
-Router.post('/updateNoteContent/:id',updateNoteContent)
+Router.post('/updateNoteContent/:id',verifyToken,updateNoteContent)
 
 Router.delete('/deleteBoardItem/:boardId/:elementId',deleteBoardItem)
 
