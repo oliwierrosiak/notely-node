@@ -40,15 +40,15 @@ Router.post('/updateNoteTitle/:id',verifyToken,updateBoardTitle)
 
 Router.post('/updateNoteContent/:id',verifyToken,updateNoteContent)
 
-Router.delete('/deleteBoardItem/:boardId/:elementId',deleteBoardItem)
+Router.delete('/deleteBoardItem/:boardId/:elementId',verifyToken,deleteBoardItem)
 
-Router.post('/deleteAWSMedia',deleteAWSMedia)
+Router.post('/deleteAWSMedia',verifyToken,deleteAWSMedia)
 
-Router.post('/updateNoteColor/:id',updateNoteColor)
+Router.post('/updateNoteColor/:id',verifyToken,updateNoteColor)
 
-Router.post('/updateNoteTemplate/:id',updateNoteTemplate)
+Router.post('/updateNoteTemplate/:id',verifyToken,updateNoteTemplate)
 
-Router.post('/updateNoteCanvas/:id',updateNoteCanvas)
+Router.post('/updateNoteCanvas/:id',verifyToken,updateNoteCanvas)
 
 Router.post('/register',userImgUploader.single('img'),registerUser)
 
