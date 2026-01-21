@@ -19,6 +19,8 @@ async function getBoardData(req,res)
             noteContent.unshift(canvas)
             note.content = [...noteContent]
         }
+
+
         const visitors = [...note.visitors]
 
         const userAlreadyVisitedIndex = visitors.findIndex(x=>x.user === req.user)
@@ -27,9 +29,15 @@ async function getBoardData(req,res)
         {
             visitors.splice(userAlreadyVisitedIndex,1)
         }
+        
 
-        visitors.push({user:req.user,time:new Date().getTime()})
-        note.visitors = visitors
+        if(note.visibility !== "private" || req.user === note.admin)
+        {
+            visitors.push({user:req.user,time:new Date().getTime()})
+            note.visitors = visitors
+
+        }
+
         await note.save()
         note.notePassword &&= true
         res.status(200).json(note)
