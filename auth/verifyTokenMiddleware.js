@@ -16,10 +16,11 @@ function verifyToken(req,res,next)
         else
         {
             req.user = data.email
+            next()
         }
     })
 
-    next()
+    
 
 }
 

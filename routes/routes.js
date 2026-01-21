@@ -36,7 +36,7 @@ Router.post('/boardImg',boardMediaUpload.single('img'),postBoardImg)
 
 Router.get('/getBoardData/:id',verifyToken,getBoardData)
 
-Router.post('/updateNoteTitle/:id',updateBoardTitle)
+Router.post('/updateNoteTitle/:id',verifyToken,updateBoardTitle)
 
 Router.post('/updateNoteContent/:id',updateNoteContent)
 
