@@ -66,7 +66,7 @@ Router.get('/joinWithCode/:code',verifyToken,joinWithCode)
 
 Router.post('/compareNotePassword',verifyToken,compareNotePassword)
 
-Router.post('/createNote',createNote)
+Router.post('/createNote',verifyToken,createNote)
 
 Router.get('/getNotes',verifyToken,getNotes)
 
