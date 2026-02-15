@@ -64,6 +64,7 @@ async function resetPassword(req,res)
     }
     catch(ex)
     {
+        console.log(ex)
         res.sendStatus(500)
     }
 }
